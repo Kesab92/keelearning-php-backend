@@ -1,0 +1,262 @@
+@import "variables";
+
+#app {
+  @import "vendor/filepond-v4.21.1";
+  @import "objects/dashboardGrid";
+  @import "components/drawer";
+  @import "components/courseProgress";
+  @import "components/moduleIntro";
+  @import "components/moduleTabs";
+  @import "components/skeletonLoader";
+  @import "components/toggle";
+}
+
+@import "partials/medium-editor";
+@import "partials/_helpdesk";
+@import "layout";
+@import "toolkit";
+@import "sites/users";
+@import "sites/indexcards";
+@import "sites/categories";
+@import "sites/groups";
+@import "sites/questions";
+@import "sites/attachments";
+@import "sites/dashboard";
+@import "sites/settings";
+@import "sites/pages";
+@import "sites/mails";
+@import "sites/competitions";
+@import "sites/import";
+@import "sites/invite";
+@import "sites/tags";
+@import "sites/learning-materials";
+@import "relaunch";
+
+// Trumps
+.template {
+  display: none;
+}
+
+.menu-overflow {
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+.cell-gradient-bg {
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 5px;
+  border: 1px solid transparent;
+}
+
+.medium-editor-action[data-action="createLink"] {
+  font-family: Icons;
+
+  &::before {
+    content: '\f0c1';
+  }
+
+  b {
+    display: none;
+  }
+}
+
+// hide permanently dismissable messages until explicitly shown by JS
+.message[data-msg-permanent] {
+  display: none;
+}
+
+.c-icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 25px;
+  overflow: hidden;
+  vertical-align: middle;
+  width: 25px;
+
+  .nav-icon & {
+    height: 15px;
+    margin-right: 0.25rem;
+    position: relative;
+    right: -1px;
+    top: -1px;
+    width: 15px;
+  }
+}
+
+.ui.menu .header.item.csv-example-link {
+  background: #b6eae8;
+}
+
+#app .application .application--wrap {
+  width: 100%;
+  min-height: calc(100vh - 170px);
+}
+
+// little badge showing view count in lists
+.views-label {
+  float: right;
+  opacity: 0.5;
+}
+.likes-wrapper {
+  display: inline-block;
+  min-width: 32px;
+  margin-left: 8px;
+  text-align: left;
+}
+
+div.learning-materials-list .ui.selection.list .item.active .icon.eye {
+  color: black;
+}
+
+// take full width so we can correctly float content to right
+.ui.list .list>.item>.icon+.content,
+.ui.list .list>.item>.image+.content,
+.ui.list>.item>.icon+.content,
+.ui.list>.item>.image+.content {
+  width: 100%;
+}
+
+.file-size-info {
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+.ui.statistic>.value,
+.ui.statistics .statistic>.value {
+  font-size: 2rem !important;
+
+  @media (min-width: 1350px) {
+    font-size: 2.5rem !important;
+  }
+
+  @media (min-width: 1450px) {
+    font-size: 3rem !important;
+  }
+
+  @media (min-width: 1550px) {
+    font-size: 3.5rem !important;
+  }
+}
+
+.clickable,
+.clickable * {
+  cursor: pointer !important;
+}
+.unclickable,
+.unclickable * {
+  cursor: default !important;
+
+  a {
+    cursor: pointer !important;
+  }
+}
+
+// disabled state of inputs still has a strong border on vuetify v15 and is thus hard to see
+// so we bring the border opacity down to be in line with the disabled text opacity
+#app .theme--light.v-text-field--outline.v-input--is-disabled > .v-input__control > .v-input__slot {
+  border-color: rgba(0, 0, 0, 0.38);
+}
+
+#app .c-drawer__content .sectionHeader{
+  color: $primary-color;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#app .c-drawer__content .mb-section{
+  margin-bottom: 35px;
+}
+
+#app .c-drawer__content .mt-section{
+  margin-top: 35px;
+}
+
+#app .c-drawer__content .my-section{
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+#app .c-drawer__content .pb-section{
+  padding-bottom: 35px;
+}
+
+#app .c-drawer__content .pt-section{
+  padding-top: 35px;
+}
+
+#app .c-drawer__content .py-section{
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+// show tinyMCE rich text editor over the sidebar
+.tox-tinymce {
+  z-index: 10;
+}
+
+#app .table-layout-fixed {
+  .v-datatable {
+    table-layout: fixed;
+  }
+
+  .v-chip {
+    max-width: 100%;
+
+    .v-chip__content {
+      display: block;
+      line-height: 32px;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+.secondaryLanguage__container{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top:0;
+  z-index: 999999999;
+  pointer-events: none;
+  border:3px solid #ff4c81;
+  text-align: center;
+}
+.secondaryLanguage__label{
+  background: #ff4c81;
+  color: #fff;
+  display: inline-block;
+  padding: 2px 10px 5px 10px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+// text isn't really centered because of the sorting icon
+#app .column.sortable.text-xs-center .v-icon {
+  margin-left: -1em;
+}
+
+// fix card height in scrollable dialog
+#app .v-dialog--scrollable .v-card {
+  height: 100%;
+}
+
+.no-pointer-events {
+  pointer-events: none;
+}
+
+.o-rounded{
+  &.--circle{
+    border-radius: 100%;
+  }
+}
+
+.cursor-progress {
+  cursor: progress;
+}
+
+#app .v-input.pagination {
+  min-width: 90px;
+}

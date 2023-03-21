@@ -1,0 +1,28 @@
+.ui.list {
+    &.spaced:not(.horizontal) .item {
+            padding-top: 1em;
+            padding-bottom: 1em;
+    }
+}
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0px;
+}
+
+.ui-state-highlight {
+    height: 49px;
+    background: #2185D0;
+    border: 2px dotted #24a5ff;
+}
+
+.v-tooltip__content--solid {
+  opacity: 1 !important;
+}
+
+.small-margin-bottom {
+    margin-bottom: 5px;
+}

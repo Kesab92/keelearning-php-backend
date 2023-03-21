@@ -1,0 +1,1 @@
+Benutzer #{{ $meta['user_id'] }}@if($user), {{ $user->getDisplayNameBackend() }} @else, Benutzer gelöscht @endif<br>

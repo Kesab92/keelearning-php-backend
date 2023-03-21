@@ -1,0 +1,44 @@
+.c-skeletonLoader {
+  background: #e0e0e0;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    animation: skeleton-loader 1.25s infinite;
+    background: linear-gradient(100deg, transparent 25%, rgba(255, 255, 255, 0.35) 50%, transparent 75%);
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.c-skeletonLoader.-circle {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.c-skeletonLoader.-line {
+  border-radius: 6px;
+  height: 12px;
+}
+
+.c-skeletonLoader.-bigLine {
+  border-radius: 10px;
+  height: 20px;
+}
+
+@keyframes skeleton-loader {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

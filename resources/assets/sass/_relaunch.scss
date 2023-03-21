@@ -1,0 +1,25 @@
+.js-isInFrame {
+  #content > .sidebar {
+    display: none;
+  }
+
+  header {
+    display: none;
+  }
+
+  .content-wrapper {
+    padding: 20px 30px 40px 30px;
+  }
+
+  #content {
+    padding-top: 0;
+  }
+
+  #app .c-drawer__container {
+    margin-top: 0;
+  }
+
+  .c-offeredByKeeunit {
+    display: none;
+  }
+}

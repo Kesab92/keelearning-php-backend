@@ -1,0 +1,42 @@
+.attachmentList {
+    padding-left: 15px !important;
+}
+
+.attachment_modal_header {
+    border:none !important;
+    box-shadow: none !important;
+}
+
+.attachment_modal_header_text {
+    font-size:12px;
+}
+
+.dropzone {
+    border:2px dashed rgba(0, 0, 0, 0.3) !important;
+    margin:10px !important;
+}
+
+.youtube_content {
+    height:160px;
+}
+
+.youtube_content_inner {
+    position: relative;
+    top: 50%;
+    left: 20%;
+    transform: translateX(-20%);
+    transform: translateY(-50%);
+}
+
+.youtube_url {
+    margin-left: 5px !important;
+}
+
+.youtube_submit {
+    margin-left: 92px !important;
+    margin-top: 10px !important;
+}
+
+.attachment {
+    margin-bottom:10px !important;
+}

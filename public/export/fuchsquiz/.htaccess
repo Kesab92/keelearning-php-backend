@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "Authentication needed"
+AuthUserFile /var/www/html/admin.quizapp-lab.de/public/export/fuchsquiz/.htpasswd
+Require valid-user
+Options +Indexes

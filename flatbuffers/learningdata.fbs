@@ -1,0 +1,65 @@
+namespace App.Flatbuffers;
+
+table Category {
+    active:bool;
+    categorygroup_id:int;
+    color:string;
+    created_at:string;
+    icon_url:string;
+    id:int;
+    image_url:string;
+    name:string;
+    points:short;
+    updated_at:string;
+}
+
+table CategoryGroup {
+    created_at:string;
+    id:int;
+    name:string;
+    updated_at:string;
+}
+
+table Question {
+    box:short;
+    box_entered_at:string;
+    category_id:int;
+    difficulty:float;
+    id:int;
+    latex:string;
+    title:string;
+    type:short;
+    answers:[Answer];
+    attachments:[Attachment];
+}
+
+table Answer {
+    content:string;
+    correct:bool;
+    feedback:string;
+    id:int;
+    language:string;
+    question_id:int;
+}
+
+table Attachment {
+    id:int;
+    question_id:int;
+    type:short;
+    url:string;
+    attachment_url:string;
+}
+
+table Setting {
+  key:string;
+  value:string;
+}
+
+table Learningdata {
+  categories:[Category];
+  category_groups:[CategoryGroup];
+  questions:[Question];
+  settings:[Setting];
+}
+
+root_type Learningdata;

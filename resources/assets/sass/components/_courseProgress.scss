@@ -1,0 +1,184 @@
+$content-spacing: 30px;
+$content-dot-size: 20px;
+$content-border-width: 2px;
+$chapter-divider-width: 2px;
+$content-unfinished-color: #dedede;
+$content-finished-color: #1c1c1c;
+
+.c-courseProgress {
+  display: inline-flex;
+  flex-direction: row;
+  margin-bottom: 23px;
+  margin-top: 10px;
+  position: relative;
+
+  &:after, &:before {
+    position: absolute;
+    display: block;
+    content: "";
+    background: $content-unfinished-color;
+    z-index: 2;
+  }
+
+  &:before {
+    left: 0;
+    top: 1px;
+    width: $chapter-divider-width;
+    height: $content-dot-size - 2px;
+  }
+
+  &:after {
+    right: -4px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    background: $content-unfinished-color;
+    border-radius: 7px;
+  }
+
+  &.-started {
+    &:before {
+      background: $content-finished-color;
+    }
+  }
+
+  &.-finished {
+    &:after {
+      background: $content-finished-color;
+    }
+  }
+}
+
+.c-courseProgress__chapter {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 50%;
+    width: $chapter-divider-width;
+    height: 10px;
+    background: $content-unfinished-color;
+    left: $content-spacing * 0.5 - ($chapter-divider-width * 0.5);
+  }
+}
+
+.c-courseProgress__chapterTitle {
+  position: absolute;
+  color: #acacac;
+  bottom: -18px;
+  left: $content-spacing * 0.5 - ($chapter-divider-width * 0.5);
+  margin-left: 5px;
+  font-size: 11px;
+  right: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c-courseProgress__chapter:first-child {
+  &:before {
+    display: none;
+  }
+
+  .c-courseProgress__chapterTitle {
+    left: 0;
+  }
+}
+
+.c-courseProgress__content {
+  width: $content-dot-size;
+  height: $content-dot-size;
+  border-radius: 100%;
+  border: $content-border-width solid $content-unfinished-color;
+  background: white;
+  margin-left: $content-spacing;
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: $content-spacing;
+    left: -1 * $content-spacing - $content-border-width;
+    border-top: 2px solid $content-unfinished-color;
+    top: $content-dot-size * 0.5 - 3px;
+    opacity: var(--opacity, 1);
+  }
+
+  &.-passed {
+    background: rgba(0, 202, 145, var(--opacity, 1));
+    border-color: rgba(28, 28, 28, var(--opacity, 1));
+
+    &:after, &:before {
+      border-color: #1c1c1c !important;
+    }
+  }
+
+  &.-test, &.-certificate {
+    box-shadow: inset 0 0 0 2px $content-unfinished-color;
+    border-radius: 1px;
+
+    &.-passed, &.-failed {
+      box-shadow: inset 0 0 0 2px rgba(28, 28, 28, var(--opacity, 1));
+    }
+  }
+
+  &.-certificate {
+    transform: rotateZ(45deg);
+
+    &:after, &:before {
+      transform: rotateZ(-45deg);
+    }
+
+    &:after {
+      transform-origin: #{$content-dot-size * 2} 0px;
+    }
+
+    &:before {
+      transform-origin: #{$content-dot-size * -0.5} 0px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
+
+    &.-certificate, &.-test {
+      box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5), inset 0 0 0 2px $content-unfinished-color;
+
+      &.-passed, &.-failed {
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5), inset 0 0 0 2px rgba(28, 28, 28, var(--opacity, 1));
+      }
+    }
+  }
+
+  .c-courseProgress__chapter &.-failed {
+    background: #f74f4f;
+    border-color: #1c1c1c;
+
+    &:after, &:before {
+      border-color: #1c1c1c !important;
+    }
+  }
+}
+
+
+.c-courseProgress__chapter:last-child {
+  .c-courseProgress__content:last-child {
+    margin-right: $content-spacing;
+
+    &:before {
+      position: absolute;
+      display: block;
+      content: "";
+      width: $content-spacing;
+      right: -1 * $content-spacing - $content-border-width;
+      border-top: 2px solid $content-unfinished-color;
+      top: $content-dot-size * 0.5 - 3px;
+    }
+  }
+}

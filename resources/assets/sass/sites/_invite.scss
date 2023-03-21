@@ -1,0 +1,14 @@
+.users-to-invite-list a{
+  color: #000;
+
+  .icon.remove {
+    display: none;
+  }
+
+  &:hover {
+    .icon.remove {
+      display: block;
+    }
+  }
+
+}

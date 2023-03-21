@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCategorygroupTagTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('categorygroup_tag', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('categorygroup_id');
+            $table->integer('tag_id');
+            $table->index('tag_id');
+            $table->index('categorygroup_id');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('categorygroup_tag');
+    }
+}

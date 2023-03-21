@@ -1,0 +1,32 @@
+.main-stats {
+    .statistic {
+        width: 100%;
+    }
+}
+
+.latest-game-counts {
+    margin: 20px 0;
+    width: 100%;
+    padding: 10px;
+    height: 240px;
+    border-radius: .28571429rem;
+    background: #FFF;
+    box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
+}
+
+.pie-chart {
+    position: relative; 
+    padding: 20px;
+    
+    span {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        color: #2185D0;
+        margin-top: -9px;
+    }
+}

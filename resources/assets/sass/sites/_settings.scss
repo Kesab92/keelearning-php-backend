@@ -1,0 +1,5 @@
+.app-settings-form {
+  & .ui.success.message, & .ui.error.message {
+    display: none;
+  }
+}

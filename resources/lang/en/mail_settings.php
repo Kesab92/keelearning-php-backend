@@ -1,0 +1,37 @@
+<?php
+
+return array(
+    'all' => 'All',
+    'AppointmentReminder' => 'Appointments: Appointment reminder',
+    'AppointmentStartDateWasUpdated' => 'Appointments: Appointment changed',
+    'AppReminder' => 'App: we miss you',
+    'ExpirationReminder' => 'App: account deletion soon',
+    'CommentDeletedForAuthor' => 'Comments: Your comment was removed',
+    'CommentDeletedForReporter' => 'Comments: Reported comment was removed',
+    'CommentNotDeleted' => 'Comments: Reported comment was not removed',
+    'CompetitionReminder' => 'Competition: reminder',
+    'CompetitionResult' => 'Competition: game result ',
+    'CompetitionInvitation' => 'Competition: new competition',
+    'CourseReminder' => 'Courses: Course reminder',
+    'GameAbort' => 'Quiz-Battle: game aborted',
+    'GameDrawInfo' => 'Quiz-Battle: game result is draw',
+    'GameInvitation' => 'Quiz-Battle: you got challenged by another player',
+    'GameLostInfo' => 'Quiz-Battle: game lost',
+    'GameReminder' => 'Quiz-Battle: your turn',
+    'GameWonInfo' => 'Quiz-Battle: game won',
+    'QuizTeamAdd' => 'Quiz-Battle: you got assigned to a quiz team',
+    'LearningMaterialsPublished' => 'learning-materials/media-center: new content',
+    'NewAppointment' => 'Appointments: New appointment',
+    'NewsPublishedInfo' => 'News: new news entry',
+    'PassedCourse' => 'Courses: Course finished successfully',
+    'TestPassed' => 'Test: test passed',
+    'TestReminder' => 'Test: test participation reminder',
+    'TestResultReminder' => 'Test: admin-only info about user progress regarding test',
+    'WebinarReminder' => 'Webinar: The meeting will start soon',
+    'info' =>
+        array(
+            'AppReminder' => 'This email will be sent to inactive users 5, 10 and 30 days after the last game.',
+            'CompetitionReminder' => 'This email will be sent 2 and 5 days after beginning a game.',
+        ),
+    'configure_notifications' => 'Notification settings',
+);

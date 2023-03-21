@@ -1,0 +1,33 @@
+name: Add a comment with the link to the PR
+
+on:
+    pull_request:
+        types: [opened, edited, labeled, unlabeled]
+
+concurrency:
+    group: asana-${{ github.ref }}
+
+jobs:
+    validate-link-presence:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: everphone-gmbh/github-asana-action@385529c13a4c0d311ac611ef4049f5a6ccf1048e
+              with:
+                  asana-pat: ${{ secrets.ASANA_PAT }}
+                  action: assert-link
+                  link-required: true
+                  github-token: ${{ github.token }}
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: set pr number
+              id: pr-number
+              run: echo "::set-output name=PR_NUMBER::$(echo -n "${GITHUB_REF}" | awk 'BEGIN { FS = "/" } ; { print $3 }')"
+
+            - uses: everphone-gmbh/github-asana-action@385529c13a4c0d311ac611ef4049f5a6ccf1048e
+              with:
+                  asana-pat: ${{ secrets.ASANA_PAT }}
+                  action: 'add-comment'
+                  comment-id: "#pr:${{ steps.pr-number.outputs.PR_NUMBER }}"
+                  text: 'Pull Request: https://github.com/keeunit/keelearning-php-backend/pull/${{ steps.pr-number.outputs.PR_NUMBER }}'
+                  is-pinned: true

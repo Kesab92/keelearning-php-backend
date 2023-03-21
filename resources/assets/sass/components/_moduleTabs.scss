@@ -1,0 +1,14 @@
+.c-moduleTabs {
+  margin-top: -10px; /* Removes the margin to the c-moduleIntro */
+  margin-bottom: 16px;
+  margin-left: -40px;
+  margin-right: -40px;
+
+  .v-tabs__bar {
+    padding-left: 40px;
+  }
+
+  .v-tabs__item--active {
+    color: #1976d2;
+  }
+}

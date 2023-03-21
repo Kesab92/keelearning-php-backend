@@ -1,0 +1,82 @@
+version: "3"
+services:
+  app:
+    container_name: keelearning-php-backend-app
+    image: keelearning-backend:dev
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html:cached
+      - ./vendor:/var/www/html/vendor:delegated
+      - ./node_modules:/var/www/html/node_modules:delegated
+      - ./docker/nginx-php-fpm/php.dev.ini:/usr/local/etc/php/php.ini
+    environment:
+      VIRTUAL_HOST: "qa.test"
+    depends_on:
+      - redis
+      - mailhog
+    networks:
+      - internal
+      - keelearning
+
+  deepstream:
+    ports:
+      - "6020:6020"
+      - "6040:6040"
+    image: keelearning-backend-deepstream
+    environment:
+        AUTH_ENDPOINT: "http://app/api/v1/deepstreamlogin"
+    links:
+      - app:backend
+    depends_on:
+      - redis
+      - app
+    networks:
+      - internal
+      - keelearning
+
+  redis:
+    image: redis:latest
+    networks:
+      - internal
+      - keelearning
+
+  mysql:
+    image: mysql:5.7
+    ports:
+     - "3306:3306"
+     - "33060:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: "quizapp"
+      MYSQL_USER: "homestead"
+      MYSQL_PASSWORD: "secret"
+    volumes:
+     - mysql:/var/lib/mysql
+    networks:
+      - internal
+      - keelearning
+
+  mailhog:
+    image: mailhog/mailhog
+    environment:
+      VIRTUAL_HOST: "mails.qa.test"
+      VIRTUAL_PORT: 8025
+      MH_HOSTNAME: "mails.qa.test"
+      MH_STORAGE: "maildir"
+    ports:
+      - "8025:8025"
+    networks:
+        - internal
+        - keelearning
+
+volumes:
+  mysql:
+    driver: "local"
+
+networks:
+  internal:
+    driver: bridge
+  keelearning:
+    external:
+      name: keelearning

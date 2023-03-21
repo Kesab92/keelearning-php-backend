@@ -1,0 +1,26 @@
+<?php
+
+return array (
+  'all_categories' => 'Alle Kategorien',
+  'lang_al' => 'Albanisch',
+  'lang_bg' => 'Bulgarisch',
+  'lang_cs' => 'Tschechisch',
+  'lang_de' => 'Deutsch (Du)',
+  'lang_de_formal' => 'Deutsch (Sie)',
+  'lang_en' => 'Englisch',
+  'lang_es' => 'Spanisch',
+  'lang_fr' => 'Französisch',
+  'lang_hr' => 'Kroatisch',
+  'lang_hu' => 'Ungarisch',
+  'lang_it' => 'Italienisch',
+  'lang_jp' => 'Japanisch',
+  'lang_nl' => 'Niederländisch',
+  'lang_no' => 'Norwegisch',
+  'lang_pl' => 'Polnisch',
+  'lang_pt' => 'Portugiesisch',
+  'lang_ro' => 'Rumänisch',
+  'lang_ru' => 'Russisch',
+  'lang_sr' => 'Serbisch',
+  'lang_tr' => 'Türkisch',
+  'lang_zh' => 'Chinesisch',
+);

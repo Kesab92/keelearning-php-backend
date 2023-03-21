@@ -1,0 +1,12 @@
+.message.update-message {
+  display: none;
+}
+
+.tag-container {
+  display: flex;
+  flex-direction: row;
+
+  .tag-checkboxes {
+    margin-right: 50px;
+  }
+}

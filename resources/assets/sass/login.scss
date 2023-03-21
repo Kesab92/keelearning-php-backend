@@ -1,0 +1,106 @@
+@import "variables";
+
+.login-wrapper {
+
+  height: 100%;
+  background: url('/img/login/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  .padded.container {
+    padding-top: 10vh;
+  }
+
+  h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ui.checkbox label {
+    cursor: pointer;
+  }
+
+  select.app-select {
+    display: none;
+  }
+  .app-message, .email-message {
+    display: none;
+  }
+  .emailstep {
+    .email-message {
+      display: block;
+    }
+  }
+  .appstep {
+    .app-message {
+      display: block;
+    }
+  }
+}
+
+.login-logo {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.ui.text.container.login-container {
+  max-width: 400px !important;
+}
+
+.ui.segment.login-main {
+  border-radius: 5px;
+  border-top: 5px solid #e86856;
+
+  h1 {
+    text-align: center;
+  }
+
+  .button.teal {
+    background: #05bee6;
+    text-transform: uppercase;
+  }
+}
+
+.login-about {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: #7f7f7f;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  text-align: center;
+
+  a {
+    color: #7f7f7f;
+  }
+}
+
+.password-reset-link {
+  color: #7f7f7f;
+  float: right;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.message-container {
+  margin-top: 14px;
+}
+
+.app-select {
+  position: relative;
+
+  > .icon {
+    left: 12px;
+    opacity: .5;
+    pointer-events: none;
+    position: absolute;
+    top: 9px;
+    z-index: 32;
+  }
+
+  .dropdown.selection {
+    padding-left: 37.4px;
+  }
+}

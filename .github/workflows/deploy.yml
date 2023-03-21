@@ -1,0 +1,56 @@
+name: Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Confirm live deployment by entering "LIVE"'
+        required: true
+        default: ''
+concurrency:
+    group: deploy
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: Check confirmation
+                if: github.event.inputs.confirmation != 'LIVE'
+                uses: actions/github-script@v3
+                with:
+                    script: |
+                        core.setFailed('Confirmation failed')
+
+            -
+                name: Check branch
+                if: success() && github.ref != 'refs/heads/master'
+                uses: actions/github-script@v3
+                with:
+                    script: |
+                        core.setFailed('Can only deploy master branch.')
+
+            -
+                name: Install kubectl
+                uses: Azure/setup-kubectl@v2.0
+                with:
+                    version: 'v1.19.3'
+
+
+            -
+                name: Set image tag
+                run: |
+                    imagetag="${committag////_}"
+                    echo "imagetag=$imagetag" >> $GITHUB_ENV
+                env:
+                    committag: ${{ github.ref }}-${{ github.sha }}
+
+            -
+                name: Deploy to k8s (live)
+                if: success()
+                run: |
+                    kubectl config set-cluster k8s --server="${{ secrets.KUBE_LIVE_URL }}" --insecure-skip-tls-verify=true
+                    kubectl config set-credentials keelearningde --token="${{ secrets.KUBE_LIVE_TOKEN }}"
+                    kubectl config set-context default --cluster=k8s --user=keelearningde
+                    kubectl config use-context default
+                    kubectl patch deployment backend-neu -nkeelearning-production -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date +'%s')\"}},\"spec\":{\"containers\":[{\"name\":\"backend-neu\",\"image\":\"keelearning.azurecr.io/keelearning/keelearning-php-backend/nginx-php-fpm:${{ env.imagetag }}\"}]}}}}"
+                    kubectl patch cronjob cronjob -nkeelearning-production -p "{\"spec\": {\"jobTemplate\": {\"spec\": {\"template\": {\"spec\": {\"containers\": [{\"name\": \"cronjob\",\"image\": \"keelearning.azurecr.io/keelearning/keelearning-php-backend/nginx-php-fpm:${{ env.imagetag }}\"}]}}}}}}"
+                    kubectl patch deployment horizon -nkeelearning-production -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"$(date +'%s')\"}},\"spec\":{\"containers\":[{\"name\":\"horizon\",\"image\":\"keelearning.azurecr.io/keelearning/keelearning-php-backend/nginx-php-fpm:${{ env.imagetag }}\"}]}}}}"

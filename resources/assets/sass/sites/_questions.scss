@@ -1,0 +1,136 @@
+.editing {
+    .ui.selection.list.question-list {
+        width: 50%;
+    }
+    .question-content {
+        width: calc(50% - 10px);
+
+        .type-icon {
+          float: none;
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          width: 32px;
+          height: 32px;
+        }
+
+        .question-title {
+          padding-right: 35px;
+          margin-top: 0;
+        }
+    }
+}
+
+.ui.selection.list.question-list {
+    display: inline-block;
+    transition: width .2s;
+    width: 100%;
+
+    .active, &:hover .active {
+        background: #2185D0;
+
+        .header {
+            color: white;
+        }
+    }
+}
+
+.ui.basic.label.question-counter.danger {
+    background: red;
+    color: white;
+}
+
+.question-content {
+    width: 0;
+    min-height: 300px;
+    transition: width .2s;
+    vertical-align: top;
+    display: inline-block;
+    padding-left: 10px;
+
+}
+
+.answer {
+    position: relative;
+    min-height: 60px;
+
+    .answer-content {
+      margin-top: 9px !important;
+    }
+
+    .medium-editor-placeholder:after {
+        margin-top: 0;
+        color: rgba(0, 0, 0, .5);
+    }
+
+
+    .ui.inverted.button.remove-answer {
+        position: absolute;
+        top: 0;
+        right: -3px;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none !important;
+    }
+
+    input[type='checkbox'] {
+        float: left;
+        margin-right: 10px;
+        height: 22px;
+    }
+
+    &.boolean .indicator {
+        background: red;
+        color: white;
+    }
+
+    &.correct {
+        .indicator {
+            background: #8BC34A;
+            color: white;
+        }
+    }
+
+    .indicator {
+        background: white;
+        border-radius: 40px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #E1E1E1;
+        display: inline-block;
+        text-align: center;
+        line-height: 40px;
+        font-size: 16px;
+        color: #737373;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+}
+
+.multiple-choice .ui.checkbox {
+    display: none;
+}
+
+.ui.button.positive.answer-is-correct.inactive,
+.ui.button.negative.answer-is-wrong.inactive {
+    background-color: #d7d9da;
+    color: #6c6c6c;
+}
+
+.multiple-choice .answer-content {
+    display: inline-block;
+    width: calc(100% - 40px);
+    top: -4px;
+    position: relative;
+    border: 1px solid #DADADA;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.latex-output {
+    font-size: 100%;
+    .text {
+        display: block;
+        margin: 0.5em 0;
+    }
+}

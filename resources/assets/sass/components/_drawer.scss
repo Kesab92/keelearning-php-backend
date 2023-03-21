@@ -1,0 +1,45 @@
+.c-drawer__container {
+  margin-top: 60px;
+  min-height: calc(100% - 60px);
+}
+
+.c-drawer__sidebar {
+  background: #f7f7f7;
+  width: 300px;
+}
+
+.c-drawer__sidebarTitle {
+  background: #eaeaea;
+}
+
+.c-drawer__navigation {
+  font-size: 24px;
+  font-weight: 200;
+  display: block;
+  color: #aaacaf;
+  text-align: right;
+  text-decoration: none;
+
+  &.router-link-active {
+    color: black;
+  }
+}
+.c-drawer__sidebarNavigation {
+  // This fixes a weird vuetify bug where the sidebar is sometimes invisible
+  transform: initial !important;
+}
+.c-drawer__content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.c-drawer__contentRouterView {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  > * {
+    flex: 0 0 auto;
+  }
+}

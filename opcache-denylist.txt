@@ -1,0 +1,6 @@
+/var/www/html/app
+/var/www/html/bootstrap
+/var/www/html/config
+/var/www/html/database
+/var/www/html/routes
+/var/www/html/storage
